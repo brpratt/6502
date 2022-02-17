@@ -1,0 +1,25 @@
+// https://aka.ms/devcontainer.json
+{
+    "name": "nes",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "extensions": [
+        "ms-vscode.cpptools"
+    ],
+    "settings": {
+        "[c]": {
+            "editor.tabSize": 4,
+            "editor.insertSpaces": true
+        }
+    },
+
+    // support ptrace-based debuggers
+    "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+    "mounts": [
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/coder/.ssh,type=bind,consistency=cached"
+    ],
+
+    "remoteUser": "coder"
+}
