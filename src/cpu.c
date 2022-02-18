@@ -29,7 +29,7 @@ static void set_n(struct cpu *cpu, uint8_t data) {
 
 static void set_v(struct cpu *cpu, uint8_t in1, uint8_t in2, uint8_t out) {
     /*
-    int u_over = (in1 & 0x80) && (in2 & 0x80) && !(out & 0x80); 
+    int u_over = (in1 & 0x80) && (in2 & 0x80) && !(out & 0x80);
     int s_over = !(in1 & 0x80) && !(in2 & 0x80) && (out & 0x80);
 
     cpu->p &= ~P_V;
@@ -706,14 +706,14 @@ static int zpx(struct cpu *cpu, const struct bus *bus) {
             instructions[cpu->opc].act(cpu);
             bus_poke(bus, cpu->ea, cpu->opr1);
             return 1;
-        } 
+        }
 
         cpu->opr1 = bus_peek(bus, cpu->ea);
 
         if (instructions[cpu->opc].act_type == ACTION_RD) {
             instructions[cpu->opc].act(cpu);
             return 1;
-        } 
+        }
 
         return 0;
     case 4:
@@ -743,14 +743,14 @@ static int zpy(struct cpu *cpu, const struct bus *bus) {
             instructions[cpu->opc].act(cpu);
             bus_poke(bus, cpu->ea, cpu->opr1);
             return 1;
-        } 
+        }
 
         cpu->opr1 = bus_peek(bus, cpu->ea);
 
         if (instructions[cpu->opc].act_type == ACTION_RD) {
             instructions[cpu->opc].act(cpu);
             return 1;
-        } 
+        }
 
         return 0;
     case 4:
@@ -829,7 +829,7 @@ static int abx(struct cpu *cpu, const struct bus *bus) {
             instructions[cpu->opc].act(cpu);
             bus_poke(bus, cpu->ea, cpu->opr1);
             return 1;
-        } 
+        }
 
         cpu->opr1 = bus_peek(bus, cpu->ea);
 
@@ -1033,7 +1033,7 @@ void cpu_tick(struct cpu *cpu, const struct bus *bus) {
         cpu->opc = bus_peek(bus, cpu->pc++);
         cpu->cycle++;
         return;
-    } 
+    }
 
     struct instruction inst = instructions[cpu->opc];
 
